@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Porcentagem</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="header">
+                <div class="icon" role="img" aria-label="Ícone de porcentagem">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="5" x2="5" y2="19"></line>
+                        <circle cx="6.5" cy="6.5" r="2.5"></circle>
+                        <circle cx="17.5" cy="17.5" r="2.5"></circle>
+                    </svg>
+                </div>
+                <h1>Calculadora de Porcentagem</h1>
+                <p class="subtitle">Rápida, precisa e elegante</p>
+            </div>
+
+            <!-- Currency Selector -->
+            <div class="currency-selector">
+                <label for="currency-select">Formato:</label>
+                <select id="currency-select" class="currency-select" aria-label="Selecionar formato de moeda">
+                    <option value="none">Número</option>
+                    <option value="BRL">Real (R$)</option>
+                    <option value="USD">Dólar ($)</option>
+                    <option value="EUR">Euro (€)</option>
+                    <option value="GBP">Libra (£)</option>
+                    <option value="JPY">Iene (¥)</option>
+                </select>
+            </div>
+
+            <!-- Tabs para diferentes tipos de cálculo -->
+            <div class="tabs" role="tablist" aria-label="Tipos de cálculo">
+                <button class="tab active" data-tab="basic" role="tab" aria-selected="true" aria-controls="basic-tab">Básico</button>
+                <button class="tab" data-tab="increase" role="tab" aria-selected="false" aria-controls="increase-tab">Aumento</button>
+                <button class="tab" data-tab="decrease" role="tab" aria-selected="false" aria-controls="decrease-tab">Desconto</button>
+                <button class="tab" data-tab="difference" role="tab" aria-selected="false" aria-controls="difference-tab">Diferença</button>
+            </div>
+
+            <!-- Tab: Cálculo Básico -->
+            <div class="tab-content active" id="basic-tab" role="tabpanel" aria-labelledby="basic">
+                <div class="input-group">
+                    <label for="value1">Quanto é</label>
+                    <div class="input-with-symbol input-wrapper">
+                        <input type="number" id="value1" placeholder="0" class="input-field" step="any" aria-label="Valor da porcentagem">
+                        <button class="clear-input-btn" data-clear="value1" aria-label="Limpar campo de porcentagem">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                        <span class="symbol">%</span>
+                    </div>
+                    <label for="value2">de</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="value2" placeholder="0" class="input-field" step="any" aria-label="Valor total">
+                        <button class="clear-input-btn" data-clear="value2" aria-label="Limpar campo de valor">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="result-container">
+                    <div class="result-box">
+                        <span class="result-label">Resultado</span>
+                        <span id="result" class="result">0,00</span>
+                        <button class="copy-btn" id="copy-result" title="Copiar resultado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="calculate" class="btn calculate-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Calcular
+                    </button>
+                    <button id="clear" class="btn clear-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                        Limpar
+                    </button>
+                </div>
+
+                <div class="quick-calculations">
+                    <h3>Cálculos Rápidos</h3>
+                    <div class="quick-buttons">
+                        <button class="quick-btn" data-percent="5">5%</button>
+                        <button class="quick-btn" data-percent="10">10%</button>
+                        <button class="quick-btn" data-percent="15">15%</button>
+                        <button class="quick-btn" data-percent="20">20%</button>
+                        <button class="quick-btn" data-percent="25">25%</button>
+                        <button class="quick-btn" data-percent="30">30%</button>
+                        <button class="quick-btn" data-percent="50">50%</button>
+                        <button class="quick-btn" data-percent="75">75%</button>
+                        <button class="quick-btn" data-percent="100">100%</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab: Aumento Percentual -->
+            <div class="tab-content" id="increase-tab">
+                <div class="input-group">
+                    <label for="increase-value">Valor inicial</label>
+                    <input type="number" id="increase-value" placeholder="0" class="input-field" step="any">
+                    <label for="increase-percent">Aumentar em</label>
+                    <div class="input-with-symbol">
+                        <input type="number" id="increase-percent" placeholder="0" class="input-field" step="any">
+                        <span class="symbol">%</span>
+                    </div>
+                </div>
+
+                <div class="result-container">
+                    <div class="result-box">
+                        <span class="result-label">Valor Final</span>
+                        <span id="increase-result" class="result">0,00</span>
+                        <button class="copy-btn" id="copy-increase" title="Copiar resultado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="additional-info" id="increase-info"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="calculate-increase" class="btn calculate-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Calcular
+                    </button>
+                    <button id="clear-increase" class="btn clear-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                        Limpar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab: Desconto Percentual -->
+            <div class="tab-content" id="decrease-tab">
+                <div class="input-group">
+                    <label for="decrease-value">Valor inicial</label>
+                    <input type="number" id="decrease-value" placeholder="0" class="input-field" step="any">
+                    <label for="decrease-percent">Desconto</label>
+                    <div class="input-with-symbol">
+                        <input type="number" id="decrease-percent" placeholder="0" class="input-field" step="any">
+                        <span class="symbol">%</span>
+                    </div>
+                </div>
+
+                <div class="result-container">
+                    <div class="result-box">
+                        <span class="result-label">Valor Final</span>
+                        <span id="decrease-result" class="result">0,00</span>
+                        <button class="copy-btn" id="copy-decrease" title="Copiar resultado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="additional-info" id="decrease-info"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="calculate-decrease" class="btn calculate-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Calcular
+                    </button>
+                    <button id="clear-decrease" class="btn clear-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                        Limpar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab: Diferença Percentual -->
+            <div class="tab-content" id="difference-tab">
+                <div class="input-group">
+                    <label for="diff-value1">Valor inicial</label>
+                    <input type="number" id="diff-value1" placeholder="0" class="input-field" step="any">
+                    <label for="diff-value2">Valor final</label>
+                    <input type="number" id="diff-value2" placeholder="0" class="input-field" step="any">
+                </div>
+
+                <div class="result-container">
+                    <div class="result-box">
+                        <span class="result-label">Diferença Percentual</span>
+                        <span id="difference-result" class="result">0,00%</span>
+                        <button class="copy-btn" id="copy-difference" title="Copiar resultado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="additional-info" id="difference-info"></div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="calculate-difference" class="btn calculate-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Calcular
+                    </button>
+                    <button id="clear-difference" class="btn clear-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 6h18"></path>
+                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                        </svg>
+                        Limpar
+                    </button>
+                </div>
+            </div>
+
+            <div class="history-section">
+                <h3>Histórico</h3>
+                <div id="history-list" class="history-list">
+                    <p class="empty-history">Nenhum cálculo realizado ainda</p>
+                </div>
+                <button id="clear-history" class="btn clear-history-btn" style="display: none;">Limpar Histórico</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
