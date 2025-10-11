@@ -71,13 +71,12 @@ Uma calculadora de porcentagem moderna, elegante e completa com interface intuit
 
 ## 🎯 Como Usar
 
-1. **Abra o arquivo** `index.html` no seu navegador
-2. **Selecione o modo** de cálculo desejado nas tabs
-3. **Escolha o formato** (número ou moeda) no seletor
-4. **Digite os valores** nos campos de entrada
-5. **Pressione Enter** ou clique em "Calcular"
-6. **Copie o resultado** clicando no ícone de copiar
-7. **Veja o histórico** dos últimos 10 cálculos
+1. **Selecione o modo** de cálculo desejado nas tabs
+2. **Escolha o formato** (número ou moeda) no seletor
+3. **Digite os valores** nos campos de entrada
+4. **Pressione Enter** ou clique em "Calcular"
+5. **Copie o resultado** clicando no ícone de copiar
+6. **Veja o histórico** dos últimos 10 cálculos
 
 ## 📱 Compatibilidade
 
